@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scripts/Popup.gd" type="Script" id=1]
+[ext_resource path="res://Assets/successpage.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Y-Regular.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 42
+font_data = ExtResource( 3 )
+
+[node name="Popup" type="Node2D"]
+z_index = 5
+script = ExtResource( 1 )
+
+[node name="Success" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="Fish" type="Sprite" parent="."]
+position = Vector2( -171, 0 )
+scale = Vector2( 2, 2 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="Label" type="Label" parent="."]
+margin_left = -93.0
+margin_top = 3.0
+margin_bottom = 49.0
+custom_colors/font_color = Color( 0.266667, 0.0627451, 0.0588235, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "FIsh"
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

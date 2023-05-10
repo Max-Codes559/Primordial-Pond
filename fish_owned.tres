@@ -1,0 +1,19 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Resource
+
+export var Test = false
+export var Grass : bool
+export var Fire = false
+export var River = false
+export var Mountain = false
+"
+
+[resource]
+script = SubResource( 1 )
+Test = false
+Grass = false
+Fire = false
+River = false
+Mountain = false

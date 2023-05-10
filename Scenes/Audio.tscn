@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Assets/Sounds/PrimalPondsMenu.wav" type="AudioStream" id=1]
+[ext_resource path="res://Scripts/Audio.gd" type="Script" id=2]
+
+[node name="Audio" type="AudioStreamPlayer"]
+stream = ExtResource( 1 )
+volume_db = -8.0
+autoplay = true
+script = ExtResource( 2 )
+
+[node name="SFX" type="AudioStreamPlayer" parent="."]
+
+[node name="SFX2" type="AudioStreamPlayer" parent="."]
+
+[node name="SFX3" type="AudioStreamPlayer" parent="."]
+
+[connection signal="finished" from="." to="." method="_on_Audio_finished"]
+[connection signal="finished" from="SFX" to="." method="_on_SFX_finished"]
+[connection signal="finished" from="SFX2" to="." method="_on_SFX_finished"]
+[connection signal="finished" from="SFX3" to="." method="_on_SFX_finished"]

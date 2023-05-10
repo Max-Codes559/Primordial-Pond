@@ -1,0 +1,379 @@
+[gd_scene load_steps=39 format=2]
+
+[ext_resource path="res://Scripts/MainGame.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Bobber.gd" type="Script" id=2]
+[ext_resource path="res://Assets/corksheet.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Star large.png" type="Texture" id=4]
+[ext_resource path="res://Assets/BG large.png" type="Texture" id=5]
+[ext_resource path="res://Assets/earth.png" type="Texture" id=6]
+[ext_resource path="res://Assets/outline.png" type="Texture" id=7]
+[ext_resource path="res://Assets/cloudplain.png" type="Texture" id=8]
+[ext_resource path="res://Assets/cloudwfisher.png" type="Texture" id=9]
+[ext_resource path="res://Scripts/Moon.gd" type="Script" id=10]
+[ext_resource path="res://Assets/LilyPads/lilypad.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Fish/fishbeta.png" type="Texture" id=12]
+[ext_resource path="res://Assets/sun.png" type="Texture" id=13]
+[ext_resource path="res://Assets/moon.png" type="Texture" id=14]
+[ext_resource path="res://Scripts/FishingBar.gd" type="Script" id=15]
+[ext_resource path="res://fish_owned.tres" type="Resource" id=16]
+[ext_resource path="res://Scripts/TestFishSil.gd" type="Script" id=17]
+[ext_resource path="res://Scripts/BackButton.gd" type="Script" id=18]
+[ext_resource path="res://Assets/progbarui.png" type="Texture" id=19]
+[ext_resource path="res://Assets/progbar.png" type="Texture" id=20]
+[ext_resource path="res://Assets/fishing line.png" type="Texture" id=21]
+[ext_resource path="res://Assets/Buttontheme.tres" type="Theme" id=22]
+[ext_resource path="res://Assets/Y-Regular.ttf" type="DynamicFontData" id=23]
+[ext_resource path="res://Assets/buttonreal.png" type="Texture" id=24]
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 565.133, 23.0851 )
+
+[sub_resource type="Animation" id=13]
+resource_name = "bobbing"
+length = 2.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Vector2( 133, 430 ), Vector2( 133, 440 ) ]
+}
+
+[sub_resource type="Animation" id=14]
+resource_name = "bobbing2"
+length = 2.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Vector2( 874, 540 ), Vector2( 874, 550 ) ]
+}
+
+[sub_resource type="CircleShape2D" id=8]
+radius = 11.0454
+
+[sub_resource type="CircleShape2D" id=6]
+radius = 31.8775
+
+[sub_resource type="Animation" id=15]
+resource_name = "Cork"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.9, 1.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0, 5, 2 ]
+}
+
+[sub_resource type="CircleShape2D" id=4]
+radius = 11.3032
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 11.3964
+
+[sub_resource type="CapsuleShape2D" id=5]
+radius = 13.162
+height = 18.5249
+
+[sub_resource type="PhysicsMaterial" id=12]
+friction = 0.0
+bounce = 0.54
+
+[sub_resource type="CircleShape2D" id=11]
+radius = 39.102
+
+[sub_resource type="StyleBoxTexture" id=9]
+texture = ExtResource( 20 )
+region_rect = Rect2( 0, 0, 287, 17 )
+
+[sub_resource type="StyleBoxTexture" id=10]
+texture = ExtResource( 19 )
+region_rect = Rect2( 0, 0, 287, 17 )
+
+[sub_resource type="DynamicFont" id=16]
+size = 24
+font_data = ExtResource( 23 )
+
+[node name="MainGame" type="Node2D"]
+position = Vector2( 0, -68 )
+script = ExtResource( 1 )
+fishOwned = ExtResource( 16 )
+
+[node name="Walls" type="Node2D" parent="."]
+
+[node name="Wall" type="StaticBody2D" parent="Walls"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall"]
+position = Vector2( 508.511, 12.766 )
+shape = SubResource( 7 )
+
+[node name="Wall2" type="StaticBody2D" parent="Walls"]
+position = Vector2( 77, 0 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall2"]
+position = Vector2( 465.133, 415.277 )
+shape = SubResource( 7 )
+
+[node name="Wall3" type="StaticBody2D" parent="Walls"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall3"]
+position = Vector2( -23.8723, 369.149 )
+rotation = 1.5708
+shape = SubResource( 7 )
+
+[node name="Wall4" type="StaticBody2D" parent="Walls"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall4"]
+position = Vector2( 1057.15, 376.064 )
+rotation = 1.5708
+shape = SubResource( 7 )
+
+[node name="BackGrounds" type="Node2D" parent="."]
+
+[node name="BottomBG" type="Sprite" parent="BackGrounds"]
+position = Vector2( 499, 324.468 )
+scale = Vector2( 1.99565, 1.99565 )
+texture = ExtResource( 4 )
+
+[node name="TopBG" type="Sprite" parent="BackGrounds"]
+position = Vector2( 790.958, 340.957 )
+scale = Vector2( 2.02, 2.02 )
+texture = ExtResource( 5 )
+offset = Vector2( -139.604, -60.396 )
+
+[node name="Outline" type="Sprite" parent="BackGrounds"]
+position = Vector2( 515.5, 505.819 )
+scale = Vector2( 3.45667, 1.92914 )
+texture = ExtResource( 7 )
+
+[node name="Cloud1" type="Sprite" parent="BackGrounds"]
+position = Vector2( 133, 430 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 8 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BackGrounds/Cloud1"]
+anims/bobbing = SubResource( 13 )
+
+[node name="Cloud Fisher" type="Sprite" parent="BackGrounds"]
+position = Vector2( 874, 550 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 9 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BackGrounds/Cloud Fisher"]
+anims/bobbing2 = SubResource( 14 )
+
+[node name="Bobber" type="KinematicBody2D" parent="."]
+position = Vector2( 416, 184 )
+z_index = 1
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bobber"]
+position = Vector2( 1, 8 )
+shape = SubResource( 8 )
+
+[node name="Sprite" type="Sprite" parent="Bobber"]
+texture = ExtResource( 3 )
+hframes = 7
+frame = 3
+region_enabled = true
+region_rect = Rect2( 3.45837, 0, 177.032, 30.8476 )
+
+[node name="Area2D" type="Area2D" parent="Bobber"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bobber/Area2D"]
+shape = SubResource( 6 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Bobber"]
+anims/Cork = SubResource( 15 )
+
+[node name="Line" type="Sprite" parent="Bobber"]
+visible = false
+position = Vector2( 149, -205 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 21 )
+
+[node name="Earth" type="Sprite" parent="."]
+position = Vector2( 530, 493 )
+scale = Vector2( 2, 2 )
+z_index = 2
+texture = ExtResource( 6 )
+
+[node name="Sun" type="Sprite" parent="Earth"]
+self_modulate = Color( 0.913725, 0.992157, 0.0117647, 1 )
+position = Vector2( -0.904297, -51.8191 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 13 )
+
+[node name="SunArea" type="Area2D" parent="Earth/Sun"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Earth/Sun/SunArea"]
+shape = SubResource( 4 )
+
+[node name="Moon" type="Sprite" parent="Earth"]
+self_modulate = Color( 0, 0.952941, 1, 1 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 14 )
+script = ExtResource( 10 )
+
+[node name="Area2D" type="Area2D" parent="Earth/Moon"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Earth/Moon/Area2D"]
+shape = SubResource( 3 )
+
+[node name="Grass" type="Sprite" parent="."]
+self_modulate = Color( 0.172549, 0.172549, 0.192157, 1 )
+position = Vector2( 711.787, 139 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 12 )
+script = ExtResource( 17 )
+
+[node name="FishArea" type="Area2D" parent="Grass"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Grass/FishArea"]
+position = Vector2( 0.797852, 0.265961 )
+rotation = -1.52652
+shape = SubResource( 5 )
+
+[node name="River" type="Sprite" parent="."]
+self_modulate = Color( 0.172549, 0.172549, 0.192157, 1 )
+position = Vector2( 274, 150 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 12 )
+script = ExtResource( 17 )
+
+[node name="FishArea" type="Area2D" parent="River"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="River/FishArea"]
+position = Vector2( 0.797852, 0.265961 )
+rotation = -1.52652
+shape = SubResource( 5 )
+
+[node name="Fire" type="Sprite" parent="."]
+self_modulate = Color( 0.172549, 0.172549, 0.192157, 1 )
+position = Vector2( 432, 306.021 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 12 )
+script = ExtResource( 17 )
+
+[node name="FishArea" type="Area2D" parent="Fire"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fire/FishArea"]
+position = Vector2( 0.797852, 0.265961 )
+rotation = -1.52652
+shape = SubResource( 5 )
+
+[node name="Mountain" type="Sprite" parent="."]
+self_modulate = Color( 0.172549, 0.172549, 0.192157, 1 )
+position = Vector2( 845.83, 296.979 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 12 )
+script = ExtResource( 17 )
+
+[node name="FishArea" type="Area2D" parent="Mountain"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mountain/FishArea"]
+position = Vector2( 0.797852, 0.265961 )
+rotation = -1.52652
+shape = SubResource( 5 )
+
+[node name="LilyPads" type="Node2D" parent="."]
+
+[node name="Lilypad" type="RigidBody2D" parent="LilyPads"]
+position = Vector2( 188, 269 )
+scale = Vector2( 2, 2 )
+physics_material_override = SubResource( 12 )
+gravity_scale = 0.0
+
+[node name="Sprite" type="Sprite" parent="LilyPads/Lilypad"]
+scale = Vector2( 2, 2 )
+texture = ExtResource( 11 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LilyPads/Lilypad"]
+position = Vector2( 0, -0.797882 )
+shape = SubResource( 11 )
+
+[node name="Lilypad2" type="RigidBody2D" parent="LilyPads"]
+position = Vector2( 925, 145 )
+scale = Vector2( 2, 2 )
+physics_material_override = SubResource( 12 )
+gravity_scale = 0.0
+
+[node name="Sprite" type="Sprite" parent="LilyPads/Lilypad2"]
+scale = Vector2( 2, 2 )
+texture = ExtResource( 11 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LilyPads/Lilypad2"]
+position = Vector2( 0, -0.797882 )
+shape = SubResource( 11 )
+
+[node name="Lilypad3" type="RigidBody2D" parent="LilyPads"]
+position = Vector2( 626, 267 )
+scale = Vector2( 2, 2 )
+physics_material_override = SubResource( 12 )
+gravity_scale = 0.0
+
+[node name="Sprite" type="Sprite" parent="LilyPads/Lilypad3"]
+scale = Vector2( 2, 2 )
+texture = ExtResource( 11 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LilyPads/Lilypad3"]
+position = Vector2( 0, -0.797882 )
+shape = SubResource( 11 )
+
+[node name="FishingBar" type="ProgressBar" parent="."]
+margin_left = 6.0
+margin_top = 36.0
+margin_right = 1027.0
+margin_bottom = 70.0
+custom_styles/fg = SubResource( 9 )
+custom_styles/bg = SubResource( 10 )
+rounded = true
+percent_visible = false
+script = ExtResource( 15 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 53, 103 )
+scale = Vector2( 0.430004, 0.537975 )
+texture = ExtResource( 24 )
+
+[node name="BackButton" type="Button" parent="."]
+margin_left = 11.0
+margin_top = 87.0
+margin_right = 96.0
+margin_bottom = 120.0
+theme = ExtResource( 22 )
+custom_fonts/font = SubResource( 16 )
+text = "Back"
+script = ExtResource( 18 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 517, 327 )
+current = true
+zoom = Vector2( 0.54, 0.54 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 7.0
+autostart = true
+
+[connection signal="pressed" from="BackButton" to="BackButton" method="_on_BackButton_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
