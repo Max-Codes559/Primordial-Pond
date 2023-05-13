@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-signal fish_hooked
+signal fish_hooked(type)
 signal fish_caught(type)
 
 onready var CatchZone = $Area2D
@@ -40,9 +40,9 @@ func catch():
 			var areanode = areaname[0]
 			areaname = areaname[0].name
 			if areaname == "FishArea":
-				emit_signal("fish_hooked")
 				catching = true
 				fishOnHook = areanode.get_parent().name
+				emit_signal("fish_hooked", fishOnHook)
 				print(fishOnHook, " is hooked!")
 				areanode.get_parent().hooked()
 				velocity = Vector2.ZERO

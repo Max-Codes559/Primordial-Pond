@@ -19,6 +19,11 @@ var waveSFX = preload("res://Assets/Sounds/SFX/SFXwavetransition.wav")
 
 var n = 0
 
+func _ready():
+	if OS.is_debug_build():
+		print("muting on debug")
+		volume_db = -80
+
 func _on_Audio_finished():
 	n += 1
 	if n >= 3:

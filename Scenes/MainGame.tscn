@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=45 format=2]
 
 [ext_resource path="res://Scripts/MainGame.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Bobber.gd" type="Script" id=2]
@@ -11,7 +11,7 @@
 [ext_resource path="res://Assets/cloudwfisher.png" type="Texture" id=9]
 [ext_resource path="res://Scripts/Moon.gd" type="Script" id=10]
 [ext_resource path="res://Assets/LilyPads/lilypad.png" type="Texture" id=11]
-[ext_resource path="res://Assets/Fish/fishbeta.png" type="Texture" id=12]
+[ext_resource path="res://Assets/Fish/diftingmola.png" type="Texture" id=12]
 [ext_resource path="res://Assets/sun.png" type="Texture" id=13]
 [ext_resource path="res://Assets/moon.png" type="Texture" id=14]
 [ext_resource path="res://Scripts/FishingBar.gd" type="Script" id=15]
@@ -24,6 +24,10 @@
 [ext_resource path="res://Assets/Buttontheme.tres" type="Theme" id=22]
 [ext_resource path="res://Assets/Y-Regular.ttf" type="DynamicFontData" id=23]
 [ext_resource path="res://Assets/buttonreal.png" type="Texture" id=24]
+[ext_resource path="res://Scripts/fire_fish.gd" type="Script" id=25]
+[ext_resource path="res://Assets/Fish/mountaineel rough.png" type="Texture" id=26]
+[ext_resource path="res://Assets/Fish/grassygoldfish.png" type="Texture" id=27]
+[ext_resource path="res://Assets/Fish/firebeta.png" type="Texture" id=28]
 
 [sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 565.133, 23.0851 )
@@ -89,11 +93,19 @@ tracks/0/keys = {
 radius = 11.3032
 
 [sub_resource type="CircleShape2D" id=3]
-radius = 11.3964
+radius = 13.7523
 
 [sub_resource type="CapsuleShape2D" id=5]
 radius = 13.162
-height = 18.5249
+height = 16.1713
+
+[sub_resource type="CapsuleShape2D" id=18]
+radius = 17.1695
+height = 4.72939
+
+[sub_resource type="CapsuleShape2D" id=17]
+radius = 17.0205
+height = 35.8418
 
 [sub_resource type="PhysicsMaterial" id=12]
 friction = 0.0
@@ -156,7 +168,7 @@ scale = Vector2( 1.99565, 1.99565 )
 texture = ExtResource( 4 )
 
 [node name="TopBG" type="Sprite" parent="BackGrounds"]
-position = Vector2( 790.958, 340.957 )
+position = Vector2( 820, 339 )
 scale = Vector2( 2.02, 2.02 )
 texture = ExtResource( 5 )
 offset = Vector2( -139.604, -60.396 )
@@ -241,10 +253,10 @@ script = ExtResource( 10 )
 shape = SubResource( 3 )
 
 [node name="Grass" type="Sprite" parent="."]
-self_modulate = Color( 0.172549, 0.172549, 0.192157, 1 )
+self_modulate = Color( 0, 0, 0, 0.509804 )
 position = Vector2( 711.787, 139 )
 scale = Vector2( 2, 2 )
-texture = ExtResource( 12 )
+texture = ExtResource( 27 )
 script = ExtResource( 17 )
 
 [node name="FishArea" type="Area2D" parent="Grass"]
@@ -255,7 +267,7 @@ rotation = -1.52652
 shape = SubResource( 5 )
 
 [node name="River" type="Sprite" parent="."]
-self_modulate = Color( 0.172549, 0.172549, 0.192157, 1 )
+self_modulate = Color( 0, 0, 0, 0.509804 )
 position = Vector2( 274, 150 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 12 )
@@ -266,14 +278,14 @@ script = ExtResource( 17 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="River/FishArea"]
 position = Vector2( 0.797852, 0.265961 )
 rotation = -1.52652
-shape = SubResource( 5 )
+shape = SubResource( 18 )
 
 [node name="Fire" type="Sprite" parent="."]
-self_modulate = Color( 0.172549, 0.172549, 0.192157, 1 )
+self_modulate = Color( 0, 0, 0, 0.509804 )
 position = Vector2( 432, 306.021 )
 scale = Vector2( 2, 2 )
-texture = ExtResource( 12 )
-script = ExtResource( 17 )
+texture = ExtResource( 28 )
+script = ExtResource( 25 )
 
 [node name="FishArea" type="Area2D" parent="Fire"]
 
@@ -283,10 +295,10 @@ rotation = -1.52652
 shape = SubResource( 5 )
 
 [node name="Mountain" type="Sprite" parent="."]
-self_modulate = Color( 0.172549, 0.172549, 0.192157, 1 )
+self_modulate = Color( 0, 0, 0, 0.509804 )
 position = Vector2( 845.83, 296.979 )
 scale = Vector2( 2, 2 )
-texture = ExtResource( 12 )
+texture = ExtResource( 26 )
 script = ExtResource( 17 )
 
 [node name="FishArea" type="Area2D" parent="Mountain"]
@@ -294,7 +306,7 @@ script = ExtResource( 17 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Mountain/FishArea"]
 position = Vector2( 0.797852, 0.265961 )
 rotation = -1.52652
-shape = SubResource( 5 )
+shape = SubResource( 17 )
 
 [node name="LilyPads" type="Node2D" parent="."]
 
@@ -351,7 +363,7 @@ rounded = true
 percent_visible = false
 script = ExtResource( 15 )
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="ButtonSprite" type="Sprite" parent="."]
 position = Vector2( 53, 103 )
 scale = Vector2( 0.430004, 0.537975 )
 texture = ExtResource( 24 )

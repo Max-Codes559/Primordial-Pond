@@ -4,7 +4,7 @@ onready var fish = $Fish
 onready var Bobber = $"../Bobber"
 onready var FishLabel = $Label
 
-var river = preload("res://Assets/Fish/grassygoldfish.png")
+var river = preload("res://Assets/Fish/diftingmola.png")
 var mountain = preload("res://Assets/Fish/eel.png")
 var grass = preload("res://Assets/Fish/grassygoldfish.png")
 var fire = preload("res://Assets/Fish/firebeta.png")
@@ -16,7 +16,6 @@ func _on_Timer_timeout():
 	queue_free()
 	
 func on_fish_caught(fishType):
-	print("pop sig rec")
 	match fishType:
 		"Grass":
 			fish.texture = grass

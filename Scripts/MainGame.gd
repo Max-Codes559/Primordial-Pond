@@ -13,7 +13,7 @@ onready var Anim2 = $"BackGrounds/Cloud Fisher/AnimationPlayer"
 
 onready var GrassFish = $Grass
 onready var FireFish = $Fire
-onready var RiverFish
+onready var RiverFish = $River
 onready var MountainFish = $Mountain
 
 export (Resource) var fishOwned
@@ -53,7 +53,6 @@ func on_fish_caught(fishType):
 			Global.River = true
 		"Mountain":
 			Global.Mountain = true
-
 
 func _on_Timer_timeout():
 	Audio.sfx3_play(4)
